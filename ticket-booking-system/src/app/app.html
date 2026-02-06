@@ -1,3 +1,33 @@
-<div>
-  Hi, I'm an Angular app!
+<!-- app.html -->
+<div class="app-container">
+  <header class="header">
+    <h1>Ticket booking system</h1>
+  </header>
+
+  <main>
+
+    <div class="sections">
+
+      <section class="section" *ngFor="let section of sections; let sectionIndex = index">
+        <div class="section-title">
+          Section {{ sectionIndex + 1 }}
+        </div>
+
+        <div class="seat-grid">
+          <div class="seat" *ngFor="let seat of seatArray">
+            {{ sectionIndex * seatsPerSection + seat }}
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+    <div class="buttons">
+      <button class="btn" type="button">Reset</button>
+      <button class="btn primary" type="button">Book Seat(s)</button>
+    </div>
+
+
+  </main>
 </div>
