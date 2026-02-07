@@ -1,0 +1,49 @@
+<!-- app.html -->
+<div class="app-container">
+  <header class="header">
+    <h1>Ticket booking system</h1>
+  </header>
+
+  <main>
+
+    <div class="sections">
+
+      <section class="section" *ngFor="let section of sections; let sectionIndex = index">
+        <div class="section-title">
+          Section {{ sectionIndex + 1 }}
+        </div>
+
+        <div class="seat-grid">
+          <!--
+            We iterate seatArray (1..18).
+            seatIndex is 0-based; compute seatNumber = sectionIndex * seatsPerSection + seatIndex + 1
+          -->
+          <div class="seat" *ngFor="let seat of seatArray; let seatIndex = index; trackBy: trackBySeat"
+            (click)="onSeatClick(sectionIndex * seatsPerSection + seatIndex + 1)" [ngClass]="{
+              'seat-selected': selectedSeats.has(sectionIndex * seatsPerSection + seatIndex + 1),
+              'seat-booked': bookedSeats.has(sectionIndex * seatsPerSection + seatIndex + 1)
+            }" [attr.aria-disabled]="bookedSeats.has(sectionIndex * seatsPerSection + seatIndex + 1) ? true : null"
+            [title]="
+              bookedSeats.has(sectionIndex * seatsPerSection + seatIndex + 1)
+                ? 'Already booked'
+                : 'Click to select/deselect'
+            ">
+            {{ sectionIndex * seatsPerSection + seatIndex + 1 }}
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+    <div class="buttons">
+      <!-- Reset clears only current selection -->
+      <button class="btn" type="button" (click)="resetSelection()">Reset</button>
+
+      <!-- Book moves selected -> booked (and clears selection) -->
+      <button class="btn primary" type="button" (click)="bookSelectedSeats()">Book Seat(s)</button>
+    </div>
+
+
+  </main>
+</div>
