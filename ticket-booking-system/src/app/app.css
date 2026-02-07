@@ -68,14 +68,44 @@ html, body {
 /* seat visual: small green outlined box */
 .seat {
   width: 100%;
-  max-width: 72px;  /* keeps seat size reasonable */
+  max-width: 72px;
   height: 40px;
   border: 2px solid green;
   border-radius: 6px;
   background: transparent;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  font-weight: 600;
+  font-size: 14px;
+  color: green;
+
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.08s ease;
+}
+
+/* new: selected seat -> light-green background */
+.seat-selected {
+  background: rgba(34, 197, 94, 0.15); /* light green */
+  border-color: #22c55e;
+  color: #065f46; /* darker green text */
+}
+
+/* new: booked seat -> dark-green background and white text;
+   also disable pointer events so clicks are ignored */
+.seat-booked {
+  background: #166534; /* dark green */
+  border-color: #166534;
+  color: white;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* small hover to give feel on non-booked seats */
+.seat:not(.seat-booked):hover {
+  transform: translateY(-2px);
 }
 
 /* buttons centered below sections */
