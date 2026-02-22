@@ -1,0 +1,91 @@
+.mainDiv {
+    border: 1px solid black;
+    width: 800px;
+    margin: 20px auto;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* Seats container */
+.seatsDiv {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /* 5 seats per row */
+    gap: 12px;
+    justify-items: center;
+    margin-bottom: 30px;
+}
+
+/* Base seat style */
+.seat {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+/* Hover effect */
+.seat:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
+
+/* Selected seat -> light green */
+.seat-selected {
+    background: rgba(34, 197, 94, 0.15);
+    border-color: #22c55e;
+    color: #065f46;
+}
+
+/* Booked seat -> dark green */
+.seat-booked {
+    background: #166534;
+    border-color: #166534;
+    color: white;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Buttons container */
+.buttonDiv {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Button styling */
+button {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 8px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: scale(0.97);
+}

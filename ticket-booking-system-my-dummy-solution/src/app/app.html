@@ -1,1 +1,23 @@
-<div>Hello World</div>
+<div class="mainDiv">
+  <div class="header">
+    Ticket Booking System
+  </div>
+
+  <div class="seatsDiv">
+    <div
+      class="seat"
+      *ngFor="let seat of seatsList; trackBy: trackBySeat"
+       [ngClass]="{
+            'seat-selected': selectedSeats.has(seat),
+            'seat-booked': bookedSeats.has(seat)
+        }" 
+      (click)="toggleSeat(seat)">
+      {{ seat }}
+    </div>
+  </div>
+
+  <div class="buttonDiv">
+    <button (click)="resetSeats()">Reset</button>
+    <button (click)="bookSeats()">Book Seat(s)</button>
+  </div>
+</div>
